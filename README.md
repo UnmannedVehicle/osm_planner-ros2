@@ -21,5 +21,5 @@ And set TF conversion in launch.
 ## Test
 First,run planner_node and rviz.
 ```
-roslaunch osm_planner planner_node.launch 
+ros2 launch osm_plan planner_node_launch.py 
 ``` 
