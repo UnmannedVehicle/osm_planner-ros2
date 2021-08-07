@@ -1,0 +1,25 @@
+Planner:
+  global_frame: base_link
+  local_map_frame: base_link    #Frame has usage, when param update_origin_pose is true
+  robot_base_frame: base_link
+
+  #names of topics
+  topic_shortest_path: "shortest_path"
+  topic_gps_name: "/fix"
+
+  # Parser's params
+  interpolation_max_distance: 2.0 # Max distance between two nodes of orientated graph
+  filter_of_ways: ["footway"]         # Filter for parser. Parse only routes, which have value on the list
+                                # If value is all, then parse all routes
+
+  set_origin_pose: 3          # Set the origin pose on the map for cartesian calculator
+                              # 0 - origin pose from service
+                              # 1 - origin pose from 1. point on the map
+                              # 2 - random origin pose
+                              # 3 - origin pose from param
+
+  origin_latitude: 28.185424
+  origin_longitude: 112.945468
+
+  footway_width: 2
+

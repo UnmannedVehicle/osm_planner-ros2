@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+  
+ 
+ <node name="utm" pkg="osm_planner" type="utm" output="screen">
+	 
+          
+</node>
+
+
+ <!-- <rosparam command="load" file="$(find osm_planner)/test/test_fei.yaml"/-->
+
+
+
+</launch>

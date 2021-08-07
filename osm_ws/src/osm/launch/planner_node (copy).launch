@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<launch>
+  <master auto="start"/>
+    <arg name="map" default="map.osm"/>
+    <arg name="osm_map_path" default="$(find osm_planner)/osm_example/$(arg map)"/>
+    <arg name="osm_path" default="package://osm_planner/osm_example/$(arg map)"/>
+
+  <node pkg="osm_planner" type="osm_planner_node" respawn="false" name="osm_planner_node" output="screen">
+      <param name="Planner/osm_map_path" value="$(arg osm_map_path)"/>
+      <rosparam file="$(find osm_planner)/config/ros_param.yaml" command="load" />
+  </node>
+ 
+
+ <!-- <rosparam command="load" file="$(find osm_planner)/test/test_fei.yaml"/-->
+<rosparam command="load" file="$(find osm_planner)/config/ros_param.yaml" />
+
+
+
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find osm_planner)/rviz/osm.rviz" />
+
+
+ <node name="utm" pkg="osm_planner" type="utm" output="screen">
+	 
+          
+</node>
+
+  <node pkg="osm_cartography" type="osm_server" name="osm_server" />
+
+  <!-- start map visualization -->
+  <node pkg="osm_cartography" type="viz_osm" name="viz_osm" >
+    <param name="map_url" value="$(arg osm_path)" />
+  </node>
+  <node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="690975 3119274 0 0 0 0 map local_map 100"/>
+
+
+</launch>
